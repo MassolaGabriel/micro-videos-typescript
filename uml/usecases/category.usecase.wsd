@@ -1,0 +1,9 @@
+@startuml Ator
+
+:admin: -> (Criar categoria)
+:admin: -> (Atualizar categoria)
+:admin: -> (Remover categoria)
+:admin: -> (Consultar uma categoria)
+:admin: -> (Consultar categorias)
+
+@enduml
