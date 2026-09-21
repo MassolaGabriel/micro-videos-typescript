@@ -1,8 +1,8 @@
 import { Category } from "./category";
 
-describe("Category Unit Tests", () => {
+describe("Category Integration Tests", () => {
   test("constructor of category", () => {
-    const category = new Category("Movie");
+    const category = new Category({ name: "Movie" });
     expect(category.name).toBe("Movie");
   });
 });
