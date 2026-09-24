@@ -6,7 +6,7 @@ export type CategoryProps = {
 };
 
 export class Category {
-  constructor(public props: CategoryProps) {}
+  constructor(public readonly props: CategoryProps) {}
 
   get name(): string {
     return this.props.name;
