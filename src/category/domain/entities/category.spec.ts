@@ -1,4 +1,4 @@
-import { Category } from "./category";
+import { Category, Category } from "./category";
 import { omit } from "lodash";
 
 describe("Category Unit Tests", () => {
@@ -52,5 +52,48 @@ describe("Category Unit Tests", () => {
       name: "Movie",
       created_at,
     });
+  });
+
+  test("getter of name prop", () => {
+    let category = new Category({ name: "Movie" });
+    expect(category.name).toBe("Movie");
+  });
+
+  test("getter and setter of description prop", () => {
+    let category = new Category({ name: "Movie" });
+    expect(category.description).toBe(null);
+
+    category = new Category({ name: "Movie", description: "Some description" });
+    expect(category.description).toBe("Some description");
+
+    // Podemos usar o [] para testarmos o setters em metodos privados
+    category["description"] = "Other description";
+    expect(category.description).toBe("Other description");
+
+    category["description"] = null;
+    expect(category.description).toBeNull();
+
+    category["description"] = undefined;
+    expect(category.description).toBeNull();
+  });
+
+  test("getter and setter of is_active prop", () => {
+    let category = new Category({ name: "Movie" });
+    expect(category.is_active).toBeTruthy();
+
+    category = new Category({ name: "Movie", is_active: true });
+    expect(category.is_active).toBeTruthy();
+
+    category = new Category({ name: "Movie", is_active: false });
+    expect(category.is_active).toBeFalsy();
+  });
+
+  test("getter of created_at prop", () => {
+    let category = new Category({ name: "Movie" });
+    expect(category.created_at).toBeInstanceOf(Date);
+
+    let created_at = new Date();
+    category = new Category({ name: "Movie", created_at: created_at });
+    expect(category.created_at).toBe(created_at);
   });
 });
