@@ -1,5 +1,6 @@
-import { Category, Category } from "./category";
+import { Category } from "./category";
 import { omit } from "lodash";
+import { validate as uuidValidate } from "uuid";
 
 describe("Category Unit Tests", () => {
   test("constructor of category", () => {
@@ -52,6 +53,21 @@ describe("Category Unit Tests", () => {
       name: "Movie",
       created_at,
     });
+  });
+
+  test("id field", () => {
+    let category = new Category({ name: "Movie" });
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({ name: "Movie" }, null);
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+
+    category = new Category({ name: "Movie" });
+    expect(category.id).not.toBeNull();
+    expect(uuidValidate(category.id)).toBeTruthy();
+    // category;
   });
 
   test("getter of name prop", () => {
