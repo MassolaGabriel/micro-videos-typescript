@@ -1,6 +1,6 @@
 import { Category } from "./category";
 import { omit } from "lodash";
-import { validate as uuidValidate } from "uuid";
+import UniqueEntityId from "@seedwork/domain/unique-entity-id.vo";
 
 describe("Category Unit Tests", () => {
   test("constructor of category", () => {
@@ -57,17 +57,11 @@ describe("Category Unit Tests", () => {
 
   test("id field", () => {
     let category = new Category({ name: "Movie" });
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
+    expect(category.id).toBeInstanceOf(UniqueEntityId);
 
-    category = new Category({ name: "Movie" }, null);
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
-
-    category = new Category({ name: "Movie" });
-    expect(category.id).not.toBeNull();
-    expect(uuidValidate(category.id)).toBeTruthy();
-    // category;
+    const uniqueEntityId = new UniqueEntityId();
+    category = new Category({ name: "Movie" }, uniqueEntityId);
+    expect(category.id).toBe(uniqueEntityId);
   });
 
   test("getter of name prop", () => {
@@ -102,6 +96,12 @@ describe("Category Unit Tests", () => {
 
     category = new Category({ name: "Movie", is_active: false });
     expect(category.is_active).toBeFalsy();
+
+    category["is_active"] = false;
+    expect(category.is_active).toBeFalsy();
+
+    category["is_active"] = undefined;
+    expect(category.is_active).toBeTruthy();
   });
 
   test("getter of created_at prop", () => {
