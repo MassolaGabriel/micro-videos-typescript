@@ -1,8 +1,14 @@
+import { deepFreeze } from "../utils/object";
+
 export default abstract class ValueObject<Value = any> {
-  protected _value: Value;
+  // VO deve ser imutavel para isso podemos usar
+  // readonly e Object.freeze no construtor
+  // MAS, isso protegeria apenas o 1 grau do obj,
+  // Para resolvermos isso criamos deepFreeze em object.ts
+  protected readonly _value: Value;
 
   constructor(value: Value) {
-    this._value = value;
+    this._value = deepFreeze(value);
   }
 
   get value(): Value {
