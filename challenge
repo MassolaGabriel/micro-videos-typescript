@@ -1,0 +1,12 @@
+Nesta 1ª fase do desafio, monte o ambiente da aplicação TypeScript com Docker, Docker Compose, Jest e tudo que foi passado no curso.
+
+Você deverá criar a entidade Categoria, bem como as abstrações de Entity e Object Value. Faça também os testes automatizados usando o Jest
+
+Implemente mais 2 operações na na entidade Categoria
+
+* update - deve receber name e description. Esta operação atualiza as duas propriedades, implemente os testes.
+* activate e deactivate - estas duas operações ativam ou desativam a categoria respectivamente, ou seja, mudam a propriedade is_active para true ou false. Implemente os testes.
+
+Suba o projeto num repositório Git remoto e compartilhe o link do repositório no envio do projeto!
+
+Bom trabalho

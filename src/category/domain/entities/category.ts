@@ -21,8 +21,25 @@ export class Category {
     this.props.created_at = this.props.created_at ?? new Date();
   }
 
+  update(name: string, description: string): void{
+    this.props.name = name
+    this.description = description
+  }
+
+  activate(){
+    this.is_active = true
+  }
+
+  deactivate(){
+    this.is_active = false
+  }
+
   get name(): string {
     return this.props.name;
+  }
+
+  private set name(value: string) {
+    this.props.name = value;
   }
 
   get description(): string | undefined {
