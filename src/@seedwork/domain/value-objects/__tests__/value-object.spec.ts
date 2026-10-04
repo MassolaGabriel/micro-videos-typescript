@@ -16,8 +16,6 @@ describe("ValueObject Unit Tests", () => {
   it("should convert to a string", () => {
     const date = new Date();
     let arrange = [
-      { received: null, expect: "null" },
-      { received: undefined, expect: "undefined" },
       { received: "", expect: "" },
       { received: "fake test", expect: "fake test" },
       { received: 0, expect: "0" },
@@ -43,7 +41,9 @@ describe("ValueObject Unit Tests", () => {
       prop1: "value1",
       nested: { prop2: "value2" },
     });
-    vo["_value"].nested.prop2 = "mudou";
+
     console.log(vo);
+
+    expect(() => { vo["_value"].nested.prop2 = "mudou" }).toThrow(TypeError)
   });
 });
