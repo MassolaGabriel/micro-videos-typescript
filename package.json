@@ -22,6 +22,7 @@
     "@types/lodash": "^4.17.25",
     "@types/node": "^26.6.1",
     "jest": "^30.5.2",
+    "regenerator-runtime": "^0.14.1",
     "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   },
